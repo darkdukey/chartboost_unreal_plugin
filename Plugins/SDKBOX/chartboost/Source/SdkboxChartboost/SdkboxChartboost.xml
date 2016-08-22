@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <init>
+	<log text="SDKBOX Chartboost Init"/>
+  </init>
+
+  <androidManifestUpdates>
+    <addElements tag="application">
+      <activity android:name="com.chartboost.sdk.CBImpressionActivity"
+                android:excludeFromRecents="true"
+                android:hardwareAccelerated="true"
+                android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+                android:configChanges="keyboardHidden|orientation|screenSize" />
+    </addElements>
+  </androidManifestUpdates>
+
+
+  <resourceCopies>
+    <copyFile src="$S(PluginDir)/../../lib/Android/PluginChartboost.jar" dst="$S(BuildDir)/libs/PluginChartboost.jar" />
+    <copyFile src="$S(PluginDir)/../../lib/Android/chartboost.jar"       dst="$S(BuildDir)/libs/chartboost.jar" />
+    <copyFile src="$S(PluginDir)/../../ProguardAdditions.txt"            dst="$S(BuildDir)/../../../Build/Android/ProguardAdditions.txt" />
+  </resourceCopies>
+
+  <gameActivityImportAdditions>
+    <insert>
+    </insert>
+  </gameActivityImportAdditions>
+
+  <gameActivityOnCreateAdditions>
+    <insert>
+    </insert>
+  </gameActivityOnCreateAdditions>
+
+  <gameActivityOnStartAdditions>
+    <insert>
+    </insert>
+  </gameActivityOnStartAdditions>
+
+  <gameActivityOnStopAdditions>
+    <insert>
+    </insert>
+  </gameActivityOnStopAdditions>
+
+  <gameActivityOnPauseAdditions>
+    <insert>
+    </insert>
+  </gameActivityOnPauseAdditions>
+
+  <gameActivityOnResumeAdditions>
+    <insert>
+    </insert>
+  </gameActivityOnResumeAdditions>
+
+  <gameActivityOnActivityResultAdditions>
+    <insert>
+    </insert>
+  </gameActivityOnActivityResultAdditions>
+
+  <proguardAdditions>
+    <insert>
+      # chartboost
+      -keep class com.chartboost.** { *; }
+      -dontwarn com.chartboost.**
+
+
+      # cocos2d-x
+      -keep public class org.cocos2dx.** { *; }
+      -dontwarn org.cocos2dx.**
+      -keep public class com.chukong.** { *; }
+      -dontwarn com.chukong.**
+
+      # google play service
+      -keep public class com.google.android.gms.** { public *; }
+      -dontwarn com.google.android.gms.**
+
+      -keep class * extends java.util.ListResourceBundle {
+          protected Object[][] getContents();
+      }
+
+      -keep public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
+          public static final *** NULL;
+      }
+
+      -keepnames @com.google.android.gms.common.annotation.KeepName class *
+      -keepclassmembernames class * {
+          @com.google.android.gms.common.annotation.KeepName *;
+      }
+
+      -keepnames class * implements android.os.Parcelable {
+          public static final ** CREATOR;
+      }
+
+      #sdkbox
+      -keep class com.sdkbox.** { *; }
+      -dontwarn com.sdkbox.**
+    </insert>
+  </proguardAdditions>
+
+</root>

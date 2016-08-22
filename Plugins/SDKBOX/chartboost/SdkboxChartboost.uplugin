@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Chartboost",
+	"Description": "This plugin provides SDKBOX Chartboost functionality.",
+	"Category": "SDKBOX",
+	"CreatedBy": "SDKBOX Inc.",
+	"CreatedByURL": "http://sdkbox.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"Modules": [
+		{
+			"Name": "SdkboxChartboost",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"EnabledByDefault": false,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"Installed": false
+}
