@@ -3,21 +3,22 @@
 	"Version": 1,
 	"VersionName": "1.0",
 	"FriendlyName": "Chartboost",
-	"Description": "This plugin provides SDKBOX Chartboost functionality.",
-	"Category": "SDKBOX",
+	"Description": "This plugin adds Chartboost framework to your game, It provides the functionality for showing interstitials, rewarded video ads and More-App pages",
+	"Category": "Advertising",
 	"CreatedBy": "SDKBOX Inc.",
 	"CreatedByURL": "http://sdkbox.com",
-	"DocsURL": "",
+	"DocsURL": "http://docs.sdkbox.com/en/unreal/chartboost/",
 	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": false,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"Installed": false,
 	"Modules": [
 		{
 			"Name": "SdkboxChartboost",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
-	],
-	"EnabledByDefault": false,
-	"CanContainContent": false,
-	"IsBetaVersion": false,
-	"Installed": false
+	]
 }
