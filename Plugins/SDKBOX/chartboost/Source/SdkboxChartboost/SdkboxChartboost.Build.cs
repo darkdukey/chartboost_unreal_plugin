@@ -79,6 +79,7 @@ namespace UnrealBuildTool.Rules
 			{
 
                 PublicAdditionalLibraries.Add(Path.Combine(ModulePath, "../../lib/iOS/PluginChartboost.a"));
+			    PublicAdditionalLibraries.Add(Path.Combine(ModulePath, "../../lib/iOS/sdkbox.a"));
 
                 PublicAdditionalFrameworks.Add(
                     new UEBuildFramework(
@@ -103,6 +104,7 @@ namespace UnrealBuildTool.Rules
 			else if (Target.Platform == UnrealTargetPlatform.Android)
 			{
                 PublicAdditionalLibraries.Add(Path.Combine(ModulePath, "../../lib/Android/PluginChartboost.a"));
+			    PublicAdditionalLibraries.Add(Path.Combine(ModulePath, "../../lib/Android/sdkbox.a"));
 
 				PrivateDependencyModuleNames.AddRange(new string[] { "Launch" });
 				AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(ModulePath, "SdkboxChartboost.xml")));
