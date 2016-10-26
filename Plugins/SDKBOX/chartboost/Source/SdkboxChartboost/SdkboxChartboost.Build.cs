@@ -64,7 +64,6 @@ namespace UnrealBuildTool.Rules
 				new string[]
 				{
 					// ... add any modules that your module loads dynamically here ...
-					"Sdkbox"
 				}
 		    );
 

@@ -8,12 +8,14 @@
 	"CreatedBy": "SDKBOX Inc.",
 	"CreatedByURL": "http://sdkbox.com",
 	"DocsURL": "http://docs.sdkbox.com/en/unreal/chartboost/",
-	"MarketplaceURL": "",
-	"SupportURL": "",
-	"EnabledByDefault": false,
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/ecf22bbef10c4a5c8701ce4ad1eeedf8",
+	"SupportURL": "http://www.sdkbox.com/answers/questions/category/unreal",
+	"EnabledByDefault": true,
 	"CanContainContent": false,
 	"IsBetaVersion": false,
-	"Installed": false,
+	"Installed": true,
+	"WhitelistPlatforms": [ "IOS", "Android" ],
+	"EngineVersion" : "4.12.0",
 	"Modules": [
 		{
 			"Name": "SdkboxChartboost",
