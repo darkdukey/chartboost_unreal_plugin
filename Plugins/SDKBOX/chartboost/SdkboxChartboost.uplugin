@@ -19,7 +19,6 @@
 		{
 			"Name": "SdkboxChartboost",
 			"Type": "Runtime",
-			"WhitelistPlatforms": [ "IOS", "Android" ],
 			"LoadingPhase": "Default"
 		}
 	]
