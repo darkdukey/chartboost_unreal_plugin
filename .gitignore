@@ -1,5 +1,6 @@
 # Ignore output folder
 /output
+/Binaries
 
 # Compiled Object files
 *.slo
