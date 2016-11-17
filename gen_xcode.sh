@@ -5,4 +5,8 @@ UAT_PATH="Build/BatchFiles/Mac/"
 
 CURR_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-${UE_PATH}${UAT_PATH}GenerateProjectFiles.sh -project="${CURR_PATH}/SDKBOX_Chartboost.uproject" -game
+pushd ${UE_PATH}${UAT_PATH}
+
+./GenerateProjectFiles.sh -project="${CURR_PATH}/SDKBOX_Chartboost.uproject" -game
+
+popd
