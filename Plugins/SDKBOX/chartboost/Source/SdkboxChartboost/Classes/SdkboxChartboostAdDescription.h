@@ -29,19 +29,26 @@ enum class ECBAdAffinityEnum : uint8
     PAE_ANDROID UMETA(DisplayName="Android")
 };
 
+UENUM(BlueprintType)
+enum class ECBAdTypeEnum : uint8
+{
+    PAE_INTERSTITAL     UMETA(DisplayName="Interstital"),
+    PAE_REWARDEDVIDEO   UMETA(DisplayName="RewardedVideo"),
+    PAE_MOREAPP         UMETA(DisplayName="MoreApp")
+};
 
 USTRUCT(BlueprintType)
 struct FSdkboxChartboostAdDescription
 {
     GENERATED_USTRUCT_BODY()
 
-    // The name of the product
+    // The named locations
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=General, meta=(DisplayName="Name"))
     FString Name;
 
-    // The product id of an In App Purchase
+    // The type of ad
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=General, meta=(DisplayName="Type"))
-    FString Type;
+    ECBAdTypeEnum Type;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=General, meta=(DisplayName="Affinity"))
     ECBAdAffinityEnum Affinity;
