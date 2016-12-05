@@ -36,15 +36,37 @@ class USdkboxChartboostListener
 public:
 
     // chartboost
+
+    // Called after an interstitial has been loaded from the Chartboost API servers and cached locally.
     void onChartboostCached(const std::string& name);
+
+    // Called before an interstitial will be displayed on the screen.
     bool onChartboostShouldDisplay(const std::string& name);
+
+    // Called after an interstitial has been loaded from the Chartboost API servers and cached locally.
     void onChartboostDisplay(const std::string& name);
+
+    // Called after an interstitial has been dismissed.
     void onChartboostDismiss(const std::string& name);
+
+    // Called after an interstitial has been closed.
     void onChartboostClose(const std::string& name);
+
+    // Called after an interstitial has been clicked.
     void onChartboostClick(const std::string& name);
+
+    // Called after a rewarded video has been viewed completely and user is eligible for reward.
     void onChartboostReward(const std::string& name, int reward);
+
+    // Called after an interstitial has attempted to load from the Chartboost API servers but failed.
     void onChartboostFailedToLoad(const std::string& name, sdkbox::CB_LoadError e);
+
+    // Called after a click is registered
     void onChartboostFailToRecordClick(const std::string& name, sdkbox::CB_ClickError e);
+
+    // Called if Chartboost SDK pauses click actions awaiting confirmation from the user.
     void onChartboostConfirmation();
+
+    // Called after the App Store sheet is dismissed, when displaying the embedded app sheet.
     void onChartboostCompleteStore();
 };
