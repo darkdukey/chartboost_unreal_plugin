@@ -87,8 +87,23 @@ FString USdkboxChartboostFunctions::ChartboostJsonStringFromAdDescriptions(const
     for (auto d : Descriptions)
     {
         TSharedPtr<FJsonObject> item = MakeShareable(new FJsonObject);
-        item->SetStringField("type", d.Type);
 
+        // type
+        switch (d.Type)
+        {
+            case ECBAdTypeEnum::PAE_INTERSTITAL:
+                item->SetStringField("type", "interstital");
+                break;
+            case ECBAdTypeEnum::PAE_REWARDEDVIDEO:
+                item->SetStringField("type", "rewarded_video");
+                break;
+            case ECBAdTypeEnum::PAE_MOREAPP:
+                item->SetStringField("type", "more_app");
+                break;
+        }
+        // item->SetStringField("type", d.Type);
+
+        // platform
         switch (d.Affinity)
         {
             case ECBAdAffinityEnum::PAE_IOS:
