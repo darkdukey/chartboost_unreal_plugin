@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <init>
+  <log text="SDKBOX IAP Init"/>
+  </init>
+
+  <androidManifestUpdates>
+    <addPermission android:name="com.android.vending.BILLING" />
+  </androidManifestUpdates>
+
+  <resourceCopies>
+    <copyFile src="$S(PluginDir)/../../lib/Android/PluginIAP.jar"        dst="$S(BuildDir)/libs/PluginIAP.jar" />
+    <copyFile src="$S(PluginDir)/../../lib/Android/PluginGooglePlay.jar" dst="$S(BuildDir)/libs/PluginGooglePlay.jar" />
+  </resourceCopies>
+
+</root>
