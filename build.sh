@@ -12,6 +12,12 @@ echo "Building Plugin for UnrealEngine " ${UE_VERSION}
 
 CURR_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-${UE_PATH}${UAT_PATH}RunUAT.sh BuildPlugin -Plugin="${CURR_PATH}/Plugins/SDKBOX/chartboost/SdkboxChartboost.uplugin" -TargetPlatforms=Mac+IOS -Package="${CURR_PATH}/output"
+# chartboost
+${UE_PATH}${UAT_PATH}RunUAT.sh BuildPlugin -Plugin="${CURR_PATH}/Plugins/SDKBOX/chartboost/SdkboxChartboost.uplugin" -TargetPlatforms=Mac+IOS+Android -Package="${CURR_PATH}/output/chartboost"
 
-cp -R "${CURR_PATH}/output/Binaries" "${CURR_PATH}/Plugins/SDKBOX/chartboost/"
+cp -R "${CURR_PATH}/output/chartboost/Binaries" "${CURR_PATH}/Plugins/SDKBOX/chartboost/"
+
+# IAP
+${UE_PATH}${UAT_PATH}RunUAT.sh BuildPlugin -Plugin="${CURR_PATH}/Plugins/SDKBOX/IAP/SdkboxIAP.uplugin" -TargetPlatforms=Mac+IOS+Android -Package="${CURR_PATH}/output/iapiap"
+
+cp -R "${CURR_PATH}/output/iap/Binaries" "${CURR_PATH}/Plugins/SDKBOX/IAP/"

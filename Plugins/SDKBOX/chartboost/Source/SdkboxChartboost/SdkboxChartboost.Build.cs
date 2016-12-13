@@ -18,67 +18,72 @@
  ****************************************************************************/
 
 using System.IO;
+using System;
 
 namespace UnrealBuildTool.Rules
 {
-	public class SdkboxChartboost : ModuleRules
-	{
+    public class SdkboxChartboost : ModuleRules
+    {
         private string ModulePath
         {
             get { return ModuleDirectory; }
         }
 
-		public SdkboxChartboost(TargetInfo Target)
-		{
-			PublicIncludePaths.AddRange(
-				new string[] {
-					// ... add public include paths required here ...
-				}
-			);
+        public SdkboxChartboost(TargetInfo Target)
+        {
+            PublicIncludePaths.AddRange(
+                new string[] {
+                    // ... add public include paths required here ...
+                }
+            );
 
-			// PrivateIncludePaths.AddRange(
-			// 	new string[] {
-			// 		"Developer/SdkboxIAP/Private",
-			// 		// ... add other private include paths required here ...
-			// 	}
-			// );
+            // PrivateIncludePaths.AddRange(
+            //  new string[] {
+            //      "Developer/SdkboxIAP/Private",
+            //      // ... add other private include paths required here ...
+            //  }
+            // );
 
-			PublicDependencyModuleNames.AddRange(
-				new string[]
-				{
-					"Core",
-					"CoreUObject",
-					"Engine"
-					// ... add other public dependencies that you statically link with here ...
-				}
-			);
+            PublicDependencyModuleNames.AddRange(
+                new string[]
+                {
+                    "Core",
+                    "CoreUObject",
+                    "Engine"
+                    // ... add other public dependencies that you statically link with here ...
+                }
+            );
 
-			PrivateDependencyModuleNames.AddRange(
-				new string[]
-				{
-					// ... add private dependencies that you statically link with here ...
-				}
-			);
+            PrivateDependencyModuleNames.AddRange(
+                new string[]
+                {
+                    // ... add private dependencies that you statically link with here ...
+                }
+            );
 
-			DynamicallyLoadedModuleNames.AddRange(
-				new string[]
-				{
-					// ... add any modules that your module loads dynamically here ...
-				}
-		    );
+            DynamicallyLoadedModuleNames.AddRange(
+                new string[]
+                {
+                    // ... add any modules that your module loads dynamically here ...
+                }
+            );
 
-			PrivateIncludePathModuleNames.AddRange(
+            PrivateIncludePathModuleNames.AddRange(
                 new string[] {
                     "Settings"
                 }
-			);
+            );
 
 
-			if (Target.Platform == UnrealTargetPlatform.IOS)
-			{
+            if (Target.Platform == UnrealTargetPlatform.IOS)
+            {
 
                 PublicAdditionalLibraries.Add(Path.Combine(ModulePath, "../../lib/iOS/PluginChartboost.a"));
-			    PublicAdditionalLibraries.Add(Path.Combine(ModulePath, "../../lib/iOS/sdkbox.a"));
+
+                // check sdkbox IAP plugin
+                if (!File.Exists(Path.Combine(ModulePath, "../../../IAP/lib/iOS/sdkbox.a"))) {
+                    PublicAdditionalLibraries.Add(Path.Combine(ModulePath, "../../lib/iOS/sdkbox.a"));
+                }
 
                 PublicAdditionalFrameworks.Add(
                     new UEBuildFramework(
@@ -99,15 +104,25 @@ namespace UnrealBuildTool.Rules
                         "SystemConfiguration"
                     }
                 );
-			}
-			else if (Target.Platform == UnrealTargetPlatform.Android)
-			{
+            }
+            else if (Target.Platform == UnrealTargetPlatform.Android)
+            {
                 PublicAdditionalLibraries.Add(Path.Combine(ModulePath, "../../lib/Android/PluginChartboost.a"));
-			    PublicAdditionalLibraries.Add(Path.Combine(ModulePath, "../../lib/Android/sdkbox.a"));
 
-				PrivateDependencyModuleNames.AddRange(new string[] { "Launch" });
-				AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(ModulePath, "SdkboxChartboost.xml")));
-			}
-		}
-	}
+                // check sdkbox IAP plugin
+                if (!File.Exists(Path.Combine(ModulePath, "../../../IAP/lib/Android/sdkbox.a")))
+                {
+                    PublicAdditionalLibraries.Add(Path.Combine(ModulePath, "../../lib/Android/sdkbox.a"));
+                }
+
+                PrivateDependencyModuleNames.AddRange(new string[] { "Launch" });
+                if (!File.Exists(Path.Combine(ModulePath, "../../../IAP/lib/Android/sdkbox.a")))
+                {
+                    AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(ModulePath, "SdkboxCore.xml")));
+                }
+                AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(ModulePath, "SdkboxChartboost.xml")));
+
+            }
+        }
+    }
 }
